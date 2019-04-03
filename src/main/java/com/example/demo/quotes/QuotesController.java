@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping(value = "/quotes")
 public class QuotesController {
@@ -18,7 +16,7 @@ public class QuotesController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Optional<Quote> getRandomQuote() {
-        return this.quotesService.getRandomQuote();
+    public Quote getRandomQuote() {
+        return this.quotesService.getRandomQuote().orElse(null);
     }
 }
